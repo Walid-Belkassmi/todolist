@@ -21,18 +21,20 @@
             <button class="value-4" id="value-4">4</button>
             <button class="value-5" id="value-5">5</button>
         </div>
-        <div class=" input-container">
+
+        <form>
             <input type="text" placeholder="Enter your text ..." id="input-text" class="text">
             <input type="submit" value="+" class="submit">
-        </div>
+        </form>
+
 
     </section>
-    <section>
+    <section class="section-btns">
         <div class="all-buttons">
-            <button class="all" id="all">ALL</button>
-            <button class="to-do" id="to-do">To do</button>
-            <button class="doing" id="doing">Doing</button>
-            <button class="done" id="done">Done</button>
+            <button class="all btn-etapes" id="all">ALL</button>
+            <button class="to-do btn-etapes" id="to-do">To do</button>
+            <button class="doing btn-etapes" id="doing">Doing</button>
+            <button class="done btn-etapes" id="done">Done</button>
         </div>
         <div class="icons">
             <i class="fa-solid fa-arrow-down-wide-short filter"></i>
@@ -40,9 +42,26 @@
         </div>
     </section>
     <section class="list">
-        <div class="exemple">
-            <input type="checkbox">
-            <p> </p>
+
+        <div class="task" id="paragraph">
+            <input type="checkbox" class="checkbox">
+            <div class="entered-text">
+                <p class="">My task task task task</p>
+                <button class="btn-pencil"><i class="fa-solid fa-pencil icon-pencil "></i></button>
+                <button class="btn-x"><i class="fa-solid fa-xmark  icon-x"></i></button>
+            </div>
+        </div>
+        <div class="select">
+            <select name="selec" id="select" class="select-list">
+
+                <option value="todo" class="select-todo">To do</option>
+                <option value="doing" class="select-doing">Doing</option>
+                <option value="done" class="select-done">Done</option>
+                <option value="edit" class="select-edit">Edit</option>
+
+
+            </select>
+
         </div>
     </section>
 
