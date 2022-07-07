@@ -1,7 +1,6 @@
 const submitButton = document.getElementById("submit-button") //Bouton pour ajouter une tâche
 const toDoContainer = document.getElementById("to-do-container") //Partie dans laquelle on ajoute les tâche
 const taskInput = document.getElementById("input-text") //Barre de saisie des tâches
-const checkboxArea = getElementById("checkbox")
 
 let taskWrapper = []
 
@@ -26,7 +25,7 @@ const submitText = submitButton.onclick = (e) => {
         <div class="task" id="paragraph-${i}">
         <input type="checkbox" class="checkbox" id="checkbox>
         <div class="entered-text">
-            <p class="">${task.name}</p>
+            <p>${task.name}</p>
             <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
                 <i class="fa-solid fa-pencil icon-pencil "></i>
             </button>
@@ -52,10 +51,7 @@ const submitText = submitButton.onclick = (e) => {
 
 }
 
-const alreadyDone = checkboxArea.onclick = () => {
-    document.getElementById("list").style.display = "none"
 
-}
 
 // ici les fonction pour pencil et X
 
