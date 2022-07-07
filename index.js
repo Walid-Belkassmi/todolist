@@ -9,39 +9,44 @@ const submitText = submitButton.onclick = (e) => {
 
     if (!taskInput.value) {
         alert("entrer un text")
-    }
-    let objet = {
-        name: taskInput.value,
-        status: "To do"
-    }
-    taskWrapper.push(objet)
-    console.log(taskWrapper);
-    const addTask = () => {
+    }else{
 
-        document.querySelector("#list").innerHTML = `
-            <div class="task" id="paragraph-1">
-            <input type="checkbox" class="checkbox">
-            <div class="entered-text">
-                <p class="">${taskWrapper.name}</p>
-                <button class="btn-pencil" id="btn-pencil" onclick="modify('select-1')">
-                    <i class="fa-solid fa-pencil icon-pencil "></i>
-                </button>
-                <select name="select" class="select-list" id="select-1">
-                    <option value="todo" class="select-todo">To do</option>
-                    <option value="doing" class="select-doing">Doing</option>
-                    <option value="edit" class="select-edit">Edit</option>
-                </select>
-                <button class="btn-x" onclick="disappear('paragraph-1')"><i
-                        class="fa-solid fa-xmark  icon-x"></i></button>
+        let objet = {
+            name: taskInput.value,
+            status: "To do"
+        }
+        taskWrapper.push(objet)
+
+        let display = ""
+
+        taskWrapper.forEach((task, i) => {
+            display += `
+
+            <div class="task" id="paragraph-${i}">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <div class="entered-text">
+                    <p>${task.name}</p>
+                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
+                        <i class="fa-solid fa-pencil icon-pencil "></i>
+                    </button>
+                    <select name="select" class="select-list" id="select-${i}">
+                        <option value="todo" class="select-todo">To do</option>
+                        <option value="doing" class="select-doing">Doing</option>
+                        <option value="edit" class="select-edit">Edit</option>
+                    </select>
+                    <button class="btn-x" onclick="disappear('paragraph-${i}')"><i
+                            class="fa-solid fa-xmark  icon-x"></i></button>
+                </div>
             </div>
-        </div>
-        `
+            `
+        })
+        document.querySelector("#list").innerHTML = display
+        taskInput.value = ""
     }
-
-    addTask()
-
-    taskInput.value = ""
 }
+
+
+// ici les fonction pour pencil et X
 
 const modify = (id) => {
     let element = document.getElementById(id)
