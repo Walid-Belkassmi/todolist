@@ -1,33 +1,32 @@
-const addToDoButton = document.getElementById("add-to-do") //Bouton pour ajouter une tâche
+const submitButton = document.getElementById("submit-button") //Bouton pour ajouter une tâche
 const toDoContainer = document.getElementById("to-do-container") //Partie dans laquelle on ajoute les tâche
-const inputField = document.getElementById("input-text") //Barre de saisie des tâches
+const taskInput = document.getElementById("input-text") //Barre de saisie des tâches
 
-let paragraph 
 
-const addTask = addToDoButton.onclick = () => {
-    // Vérifier si l'input est vide
-    if(inputField.value != ""){
-        
-        paragraph = document.createElement("p")
+let taskWrapper = []
+
+const onTaskSubmit = submitButton.onclick = (e) => {
+    e.preventDefault()
+    let task = taskInput.value
+
+    if(!task){
+        alert("Saisir une tâche ! ")
     }
 
-    // Contenu de l'input dans le paragraphe
-    paragraph.innerText = inputField.value
+    let taskInfo = {
+        name: task,
+        status: "To do"
+    }
 
-    // Stylisé le paragraphe
-    paragraph.classList.add("paragraph-style")
+    taskWrapper.push(taskInfo)
+    console.log(taskInfo)
 
-    // Ajouter le paragraphe dans l'élément toDoContainer
-    toDoContainer.appendChild(paragraph)
+    const addTask = () => {
+        
+    }
 
-    // Vider l'input après que le paragraphe soit ajouté
-    inputField.value = ""
-
-    paragraph.addEventListener("click", () => {
-        toDoContainer.removeChild(paragraph)
-    })
+    taskInput.value = ""
 }
-
 
 
 
