@@ -13,11 +13,20 @@
     height: 50px;
     border-radius: 50%;
     font-size: 1.2rem;
+    font-weight: 600;
     background-color: #ced6d9;
     border: 1px solid #c5d3d9;
     margin: 0 1.2vw 2vh 0;
     cursor: pointer;
 }
+
+/* .logo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: tomato;
+    font-style: italic;
+    margin-left: 300px;
+} */
 
 
 
@@ -163,6 +172,7 @@ form {
     cursor: pointer;
     border: none;
     background-color: #92d6f0;
+    position: relative;
 }
 
 .btn-x {
@@ -176,7 +186,8 @@ form {
 }
 
 select {
-    display: none;
+    /* display: none; */
+
     width: 10vw;
     background-color: #5680e3;
     height: 4vh;
@@ -186,12 +197,5 @@ select {
     font-weight: 600;
     color: white;
     text-align: center;
-}
-
-
-
-
-
-
-
+    position: absolute;
 }
