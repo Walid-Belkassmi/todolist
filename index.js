@@ -1,8 +1,10 @@
 const submitButton = document.getElementById("submit-button") //Bouton pour ajouter une tâche
 const toDoContainer = document.getElementById("to-do-container") //Partie dans laquelle on ajoute les tâche
 const taskInput = document.getElementById("input-text") //Barre de saisie des tâches
+const checkboxArea = getElementById("checkbox")
 
 let taskWrapper = []
+
 const submitText = submitButton.onclick = (e) => {
     e.preventDefault()
 
@@ -15,37 +17,34 @@ const submitText = submitButton.onclick = (e) => {
     }
     taskWrapper.push(objet)
     console.log(taskWrapper);
-    const addTask = () => {
 
-        document.querySelector("#list").innerHTML = `
+    let display = ""
+    taskWrapper.forEach((task, i) => {
 
+        display += `
 
-        <div class="task" id="paragraph-1">
-        <input type="checkbox" class="checkbox">
+        <div class="task" id="paragraph-${i}">
+        <input type="checkbox" class="checkbox" id="checkbox>
         <div class="entered-text">
-            <p class="">${taskWrapper.name}</p>
-            <button class="btn-pencil" id="btn-pencil" onclick="modify('select-1')">
+            <p class="">${task.name}</p>
+            <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
                 <i class="fa-solid fa-pencil icon-pencil "></i>
             </button>
-            <select name="select" class="select-list" id="select-1">
+            <select name="select" class="select-list" id="select-${i}">
                 <option value="todo" class="select-todo">To do</option>
                 <option value="doing" class="select-doing">Doing</option>
                 <option value="edit" class="select-edit">Edit</option>
             </select>
-            <button class="btn-x" onclick="disappear('paragraph-1')"><i
+            <button class="btn-x" onclick="disappear('paragraph-${i}')"><i
                     class="fa-solid fa-xmark  icon-x"></i></button>
         </div>
     </div>
-
-
         `
 
+    })
+    document.querySelector("#list").innerHTML = display
 
 
-    }
-
-
-    addTask()
 
     taskInput.value = ""
 
@@ -53,35 +52,12 @@ const submitText = submitButton.onclick = (e) => {
 
 }
 
+const alreadyDone = checkboxArea.onclick = () => {
+    document.getElementById("list").style.display = "none"
 
-// let paragraph
+}
 
-// const addTask = addToDoButton.onclick = () => {
-//     // Vérifier si l'input est vide
-//     if (inputField.value != "") {
-
-//         paragraph = document.createElement("p")
-//     }
-
-//     // Contenu de l'input dans le paragraphe
-//     paragraph.innerText = inputField.value
-
-//     // Stylisé le paragraphe
-//     paragraph.classList.add("paragraph-style")
-
-//     // Ajouter le paragraphe dans l'élément toDoContainer
-//     toDoContainer.appendChild(paragraph)
-
-//     // Vider l'input après que le paragraphe soit ajouté
-//     inputField.value = ""
-
-//     paragraph.addEventListener("click", () => {
-//         toDoContainer.removeChild(paragraph)
-//     })
-// }
-
-
-
+// ici les fonction pour pencil et X
 
 const modify = (id) => {
 
