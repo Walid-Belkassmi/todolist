@@ -122,13 +122,16 @@ form {
     width: 55vw;
     margin: auto;
     padding-top: 3vh;
-
+    height: 800px;
+    /* background-color: yellow; */
 }
 
 .task {
     height: 5vh;
     display: flex;
     align-items: center;
+    margin-bottom: 2vh;
+
 }
 
 /* ????????? */
@@ -152,6 +155,7 @@ form {
     background-color: #92d6f0;
     margin-left: 1vw;
     border-radius: 5px;
+    position: relative;
 }
 
 .entered-text p {
@@ -171,7 +175,7 @@ form {
     cursor: pointer;
     border: none;
     background-color: #92d6f0;
-    position: relative;
+
 }
 
 .btn-x {
@@ -184,9 +188,12 @@ form {
     border: none;
 }
 
-select {
-    /* display: none; */
 
+
+select {
+    margin-left: 81%;
+    margin-top: 9vh;
+    display: none;
     width: 10vw;
     background-color: #5680e3;
     height: 4vh;
