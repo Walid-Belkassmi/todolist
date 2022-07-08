@@ -122,16 +122,16 @@ const removeTask = (deleteId) => {
             <div class="task" id="paragraph-${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
                 <div class="entered-text">
-                    <p>${task.name}</p>
+                    <p>${task.name}  </p><span class="span">${task.value}</span>
                     <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${task.id}')">
-                        <task.id class="fa-solid fa-pencil icon-pencil "></task.id>
+                        <i class="fa-solid fa-pencil icon-pencil "></i>
                     </button>
                     <select name="select" class="select-list" id="select-${task.id}">
                         <option value="todo" class="select-todo">To do</option>
                         <option value="doing" class="select-doing">Doing</option>
                         <option value="edit" class="select-edit">Edit</option>
                     </select>
-                    <button class="btn-x" id="task-${task.id}" onclick="removeTask('paragraph-${task.id}')"><i
+                    <button class="btn-x" onclick="removeTask('paragraph-${task.id}')"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
             </div>
