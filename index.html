@@ -14,19 +14,22 @@
 <body>
     <section class="task-bar">
         <div class="value-level">
-            <button class="value-0" id="value-0">0</button>
-            <button class="value-1" id="value-1">1</button>
-            <button class="value-2" id="value-2">2</button>
-            <button class="value-3" id="value-3">3</button>
-            <button class="value-4" id="value-4">4</button>
-            <button class="value-5" id="value-5">5</button>
-            <!-- <p class="logo">WaLuc</p> -->
+            <p class="logo">WaLuc</p>
+            <!-- <button class="value-btn" id="value-0" onclick="importence('value-0')">0</button> -->
+            <button class="value-btn" id="value-1" onclick="importence('value-1')">1</button>
+            <button class="value-btn" id="value-2" onclick="importence('value-2')">2</button>
+            <button class="value-btn" id="value-3" onclick="importence('value-3')">3</button>
+            <button class="value-btn" id="value-4" onclick="importence('value-4')">4</button>
+
+            <button class="value-5" id="value-5" onclick="importence('value-5')">5</button>
+
         </div>
 
         <form>
             <input type="text" placeholder="Enter your text ..." id="input-text" class="text">
             <input type="submit" value="+" class="submit" id="submit-button">
         </form>
+
     </section>
     <section class="section-btns">
         <div class="all-buttons">
@@ -41,11 +44,11 @@
         </div>
     </section>
     <section class="list" id="list">
-
-        <!-- <div class="task" id="paragraph-1">
-            <input type="checkbox" class="checkbox" id="checkbox">
+        <!-- 
+        <div class="task" id="paragraph-1">
+            <input type="checkbox" class="checkbox" id="checkbox-1" onchange="changeStatus(this)">
             <div class="entered-text">
-                <p>ojsfo^zjf</p>
+                <p></p>
                 <button class="btn-pencil" id="btn-pencil" onclick="modify('select-1')">
                     <i class="fa-solid fa-pencil icon-pencil "></i>
                 </button>
@@ -54,7 +57,7 @@
                     <option value="doing" class="select-doing">Doing</option>
                     <option value="edit" class="select-edit">Edit</option>
                 </select>
-                <button class="btn-x" onclick="disappear('paragraph-1')"><i
+                <button class="btn-x" onclick="removeTask('paragraph-1')"><i
                         class="fa-solid fa-xmark  icon-x"></i></button>
             </div>
         </div> -->

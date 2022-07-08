@@ -5,8 +5,11 @@
     width: 55vw;
     margin: auto;
     height: 37vh;
+    position: relative;
 
 }
+
+
 
 .value-level button {
     width: 50px;
@@ -20,13 +23,22 @@
     cursor: pointer;
 }
 
-/* .logo {
-    font-size: 1.6rem;
+
+.logo {
+    position: absolute;
+    margin-left: 88%;
+    margin-top: 2vh;
+    font-size: 1.4rem;
     font-weight: 600;
-    color: tomato;
     font-style: italic;
-    margin-left: 300px;
-} */
+    color: #535f66;
+
+    text-shadow: 2px 1px 0px rgba(227, 11, 11, 0.3);
+    border-bottom: 3px solid #66737a;
+    width: 6vw;
+
+
+}
 
 
 
@@ -143,9 +155,7 @@ form {
 
 }
 
-/* .input[type="checkbox"]:checked {
-    background-color: red;
-} */
+
 
 .entered-text {
     display: flex;
@@ -161,12 +171,22 @@ form {
 .entered-text p {
     width: 85%;
     margin: 0 1vw 0 1vw;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 600;
-
 
 }
 
+.span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 30px;
+    height: 30px;
+    padding-top: 2px;
+    text-align: center;
+    background-color: white;
+    border: 3px solid #adaca0;
+    border-radius: 50%;
+}
 
 .btn-pencil {
     font-size: 1rem;
@@ -196,7 +216,7 @@ select {
     margin-top: 9vh;
     display: none;
     width: 10vw;
-    background-color: #5680e3;
+    background-color: #90b0a8;
     height: 4vh;
     border: none;
     outline: none;
@@ -205,4 +225,5 @@ select {
     color: white;
     text-align: center;
     position: absolute;
+    z-index: 3;
 }
