@@ -3,6 +3,8 @@ const toDoContainer = document.getElementById("to-do-container") //Partie dans l
 const taskInput = document.getElementById("input-text") //Barre de saisie des tâches
 const checkboxArea = document.getElementById('checkbox-1')
 const valueButon = document.querySelectorAll(".value-btn")
+const editButton = document.getElementById("select-edit")
+const dice = document.getElementById("random") //Dé qui génère aléatoirement une task
 
 let taskWrapper = []
 let y = ""
@@ -29,7 +31,7 @@ const submitText = submitButton.onclick = (e) => {
 
             display += `
 
-            <div class="task" id="paragraph-${task.id}">
+            <div class="task" id="${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
                 <div class="entered-text">
                     <p>${task.name}  </p><span class="span">${task.value}</span>
@@ -39,9 +41,9 @@ const submitText = submitButton.onclick = (e) => {
                     <select name="select" class="select-list" id="select-${task.id}">
                         <option value="todo" class="select-todo">To do</option>
                         <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit">Edit</option>
+                        <option value="edit" class="select-edit" id="select-edit">Edit</option>
                     </select>
-                    <button class="btn-x" onclick="removeTask('paragraph-${i}')"><i
+                    <button class="btn-x" onclick="removeTask(${task.id})"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
             </div>
@@ -77,15 +79,7 @@ const importence = (id) => {
 
 }
 
-
-
-
-
-
-
-
-
-// checkbox -change status
+// checkbox change status to Done
 
 const changeStatus = (element) => {
     if (element.checked) {
@@ -110,16 +104,17 @@ const modify = (id) => {
     }
 }
 
-
+    
 const removeTask = (deleteId) => {
     // let deleteButton = document.getElementsById(id)
     // deleteButton.parentElement.parentNode.remove(deleteButton)
+    // deleteId.parentNode.remove(deleteId)
+    // console.log(deleteId)
     taskWrapper.splice(deleteId, 1)
     let display = ""
     taskWrapper.forEach((task) => {
             display += `
-
-            <div class="task" id="paragraph-${task.id}">
+            <div class="task" id="${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
                 <div class="entered-text">
                     <p>${task.name}  </p><span class="span">${task.value}</span>
@@ -131,7 +126,7 @@ const removeTask = (deleteId) => {
                         <option value="doing" class="select-doing">Doing</option>
                         <option value="edit" class="select-edit">Edit</option>
                     </select>
-                    <button class="btn-x" onclick="removeTask('paragraph-${task.id}')"><i
+                    <button class="btn-x" onclick="removeTask(${task.id})"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
             </div>
@@ -139,12 +134,57 @@ const removeTask = (deleteId) => {
         })
     console.log(taskWrapper)
     document.querySelector("#list").innerHTML = display
-
 }
 
+// editButton.addEventListener("click", => {
+//     alert('ça marche !')
+// })
 
 
+const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"] 
+dice.addEventListener("click", () => {
+    const min = 0
+    const max = randomTask.length
+    const randomTaskNumber = Math.floor(Math.random() * max) + min
+
+    let objet = {
+        name: randomTask[randomTaskNumber],
+        status: "To do",
+        id : taskWrapper.length || 0,
+        value: y
+    }
+
+    taskWrapper.push(objet)
+
+        let display = ""
+
+        taskWrapper.forEach((task, i) => {
+
+            display += `
+
+            <div class="task" id="paragraph-${task.id}">
+                <input type="checkbox" class="checkbox" id="checkbox${task.id}">
+                <div class="entered-text">
+                    <p>${task.name}  </p><span class="span">${task.value}</span>
+                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
+                        <i class="fa-solid fa-pencil icon-pencil "></i>
+                    </button>
+                    <select name="select" class="select-list" id="select-${task.id}">
+                        <option value="todo" class="select-todo">To do</option>
+                        <option value="doing" class="select-doing">Doing</option>
+                        <option value="edit" class="select-edit" id="select-edit">Edit</option>
+                    </select>
+                    <button class="btn-x" onclick="removeTask()"><i
+                            class="fa-solid fa-xmark  icon-x"></i></button>
+                </div>
+            </div>
+            `
+            y = ""
+        })
 
 
-
+        document.querySelector("#list").innerHTML = display
+        taskInput.value = ""
+    console.log(randomTaskNumber)
+})
 
