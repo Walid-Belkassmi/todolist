@@ -34,9 +34,6 @@ const submitText = submitButton.onclick = (e) => {
 
         let display = ""
 
-
-
-
         taskWrapper.forEach((task, i) => {
 
 
@@ -55,11 +52,7 @@ const submitText = submitButton.onclick = (e) => {
                     <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                         <i class="fa-solid fa-pencil icon-pencil"></i>
                     </button>
-                    <select name="select" class="select-list" id="select-${task.id}">
-                        <option value="todo" class="select-todo">To do</option>
-                        <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit" id="select-edit">Edit</option>
-                    </select>
+                   
                     <button class="btn-x" onclick="removeTask(${task.id})"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
@@ -128,7 +121,7 @@ const modify = (id) => {
     }
 }
 
-    
+
 const removeTask = (deleteId) => {
     // let deleteButton = document.getElementsById(id)
     // deleteButton.parentElement.parentNode.remove(deleteButton)
@@ -152,11 +145,7 @@ const removeTask = (deleteId) => {
               <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                   <i class="fa-solid fa-pencil icon-pencil"></i>
               </button>
-              <select name="select" class="select-list" id="select-${task.id}">
-                  <option value="todo" class="select-todo">To do</option>
-                  <option value="doing" class="select-doing">Doing</option>
-                  <option value="edit" class="select-edit" id="select-edit">Edit</option>
-              </select>
+            
               <button class="btn-x" onclick="removeTask(${task.id})"><i
                       class="fa-solid fa-xmark  icon-x"></i></button>
           </div>
@@ -172,7 +161,7 @@ const removeTask = (deleteId) => {
 // })
 
 
-const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"] 
+const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"]
 dice.addEventListener("click", () => {
     const min = 0
     const max = randomTask.length
@@ -181,17 +170,17 @@ dice.addEventListener("click", () => {
     let objet = {
         name: randomTask[randomTaskNumber],
         status: "To do",
-        id : taskWrapper.length || 0,
+        id: taskWrapper.length || 0,
         value: y
     }
 
     taskWrapper.push(objet)
 
-        let display = ""
+    let display = ""
 
-        taskWrapper.forEach((task, i) => {
+    taskWrapper.forEach((task, i) => {
 
-            display += `
+        display += `
 
             <div class="task" id="paragraph-${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
@@ -210,12 +199,12 @@ dice.addEventListener("click", () => {
                 </div>
             </div>
             `
-            y = ""
-        })
+        y = ""
+    })
 
 
-        document.querySelector("#list").innerHTML = display
-        taskInput.value = ""
+    document.querySelector("#list").innerHTML = display
+    taskInput.value = ""
     console.log(randomTaskNumber)
 })
 
