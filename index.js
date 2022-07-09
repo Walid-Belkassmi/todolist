@@ -4,51 +4,64 @@ const taskInput = document.getElementById("input-text") //Barre de saisie des tÃ
 const checkboxArea = document.getElementById('checkbox-1')
 const valueButon = document.querySelectorAll(".value-btn")
 
+
+
+
 let taskWrapper = []
 let y = ""
 
 const submitText = submitButton.onclick = (e) => {
 
+
     e.preventDefault()
 
     if (!taskInput.value) {
         alert("entrer un text")
+    } else if (taskInput.value.length >= 55) {
+        alert("not more than 55 characters")
+        taskInput.value = ""
     } else {
 
         let objet = {
             name: taskInput.value,
             status: "To do",
-            id : taskWrapper.length || 0,
+            id: taskWrapper.length || 0,
             value: y
         }
         taskWrapper.push(objet)
 
         let display = ""
 
+
+
+
         taskWrapper.forEach((task, i) => {
 
+
+
             display += `
+            <div class="status-buttons">
+              <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+              <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+            </div> 
 
             <div class="task" id="paragraph-${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
                 <div class="entered-text">
-                    <p>${task.name}  </p><span class="span">${task.value}</span>
-                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
-                        <i class="fa-solid fa-pencil icon-pencil "></i>
+                    <p id="main-task">${task.name}</p><span class="span">${task.value}</span>
+                    
+                    <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                        <i class="fa-solid fa-pencil icon-pencil"></i>
                     </button>
-                    <select name="select" class="select-list" id="select-${task.id}">
-                        <option value="todo" class="select-todo">To do</option>
-                        <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit">Edit</option>
-                    </select>
                     <button class="btn-x" onclick="removeTask('paragraph-${i}')"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
             </div>
             `
-            y = ""
-        })
 
+            y = ""
+
+        })
 
         document.querySelector("#list").innerHTML = display
         taskInput.value = ""
@@ -56,6 +69,14 @@ const submitText = submitButton.onclick = (e) => {
     }
 
 }
+
+
+const editText = () => {
+
+
+
+}
+
 
 
 const importence = (id) => {
@@ -77,14 +98,6 @@ const importence = (id) => {
 
 }
 
-
-
-
-
-
-
-
-
 // checkbox -change status
 
 const changeStatus = (element) => {
@@ -96,7 +109,6 @@ const changeStatus = (element) => {
     }
 
 }
-
 
 
 // ici les fonction pour pencil et X
@@ -117,7 +129,7 @@ const removeTask = (deleteId) => {
     taskWrapper.splice(deleteId, 1)
     let display = ""
     taskWrapper.forEach((task) => {
-            display += `
+        display += `
 
             <div class="task" id="paragraph-${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
@@ -127,20 +139,22 @@ const removeTask = (deleteId) => {
                         <i class="fa-solid fa-pencil icon-pencil "></i>
                     </button>
                     <select name="select" class="select-list" id="select-${task.id}">
-                        <option value="todo" class="select-todo">To do</option>
-                        <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit">Edit</option>
+                        <option value="1" class="select-todo">To do</option>
+                        <option value="2" class="select-doing">Doing</option>
+                        <option value="3" class="select-edit">Edit</option>
                     </select>
                     <button class="btn-x" onclick="removeTask('paragraph-${task.id}')"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
             </div>
             `
-        })
+    })
     console.log(taskWrapper)
     document.querySelector("#list").innerHTML = display
 
 }
+
+
 
 
 

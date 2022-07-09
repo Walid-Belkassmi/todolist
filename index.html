@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <section class="task-bar">
         <div class="value-level">
             <p class="logo">WaLuc</p>
@@ -20,7 +21,6 @@
             <button class="value-btn" id="value-2" onclick="importence('value-2')">2</button>
             <button class="value-btn" id="value-3" onclick="importence('value-3')">3</button>
             <button class="value-btn" id="value-4" onclick="importence('value-4')">4</button>
-
             <button class="value-5" id="value-5" onclick="importence('value-5')">5</button>
 
         </div>
@@ -39,29 +39,34 @@
             <button class="done btn-etapes" id="done">Done</button>
         </div>
         <div class="icons">
-            <i class="fa-solid fa-arrow-down-wide-short filter"></i>
-            <i class="fa-solid fa-dice dice"></i>
+            <button type="button" class="btn-filter" id="btn-filter">
+                <i class="fa-solid fa-arrow-down-wide-short filter"></i>
+                <select name="select" id="selec" class="select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </button>
+            <button type="button" id="btn-dice" class="btn-dice">
+                <i class="fa-solid fa-dice dice"></i>
+            </button>
         </div>
     </section>
     <section class="list" id="list">
-        <!-- 
+        <!-- <div class="status-buttons">
+            <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+            <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+        </div>
         <div class="task" id="paragraph-1">
             <input type="checkbox" class="checkbox" id="checkbox-1" onchange="changeStatus(this)">
             <div class="entered-text">
-                <p></p>
-                <button class="btn-pencil" id="btn-pencil" onclick="modify('select-1')">
-                    <i class="fa-solid fa-pencil icon-pencil "></i>
+                <p id="main-task"></p>
+                <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                    <i class=" fa-solid fa-pencil icon-pencil "></i>
                 </button>
-                <select name="select" class="select-list" id="select-1">
-                    <option value="todo" class="select-todo">To do</option>
-                    <option value="doing" class="select-doing">Doing</option>
-                    <option value="edit" class="select-edit">Edit</option>
-                </select>
-<<<<<<< HEAD
-                <button class="btn-x" id="btn-x-1" onclick="removeTask('paragraph-1')"><i
-=======
-                <button class="btn-x" onclick="removeTask('paragraph-1')"><i
->>>>>>> 9b3a72789878528b6197b329bdea85e27477e773
+                <button class=" btn-x" id="btn-x-1" onclick="removeTask('paragraph-1')"><i
                         class="fa-solid fa-xmark  icon-x"></i></button>
             </div>
         </div> -->
