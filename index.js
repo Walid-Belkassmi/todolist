@@ -6,37 +6,54 @@ const valueButon = document.querySelectorAll(".value-btn")
 const editButton = document.getElementById("select-edit")
 const dice = document.getElementById("random") //Dé qui génère aléatoirement une task
 
+
+
+
 let taskWrapper = []
 let y = ""
 
 const submitText = submitButton.onclick = (e) => {
 
+
     e.preventDefault()
 
     if (!taskInput.value) {
         alert("entrer un text")
+    } else if (taskInput.value.length >= 55) {
+        alert("not more than 55 characters")
+        taskInput.value = ""
     } else {
 
         let objet = {
             name: taskInput.value,
             status: "To do",
-            id : taskWrapper.length || 0,
+            id: taskWrapper.length || 0,
             value: y
         }
         taskWrapper.push(objet)
 
         let display = ""
 
+
+
+
         taskWrapper.forEach((task, i) => {
 
+
+
             display += `
+            <div class="status-buttons">
+              <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+              <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+            </div> 
 
             <div class="task" id="${task.id}">
                 <input type="checkbox" class="checkbox" id="checkbox${task.id}">
                 <div class="entered-text">
-                    <p>${task.name}  </p><span class="span">${task.value}</span>
-                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
-                        <i class="fa-solid fa-pencil icon-pencil "></i>
+                    <p id="main-task">${task.name}</p><span class="span">${task.value}</span>
+                    
+                    <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                        <i class="fa-solid fa-pencil icon-pencil"></i>
                     </button>
                     <select name="select" class="select-list" id="select-${task.id}">
                         <option value="todo" class="select-todo">To do</option>
@@ -49,8 +66,8 @@ const submitText = submitButton.onclick = (e) => {
             </div>
             `
             y = ""
-        })
 
+        })
 
         document.querySelector("#list").innerHTML = display
         taskInput.value = ""
@@ -58,6 +75,14 @@ const submitText = submitButton.onclick = (e) => {
     }
 
 }
+
+
+const editText = () => {
+
+
+
+}
+
 
 
 const importence = (id) => {
@@ -79,7 +104,7 @@ const importence = (id) => {
 
 }
 
-// checkbox change status to Done
+// checkbox -change status
 
 const changeStatus = (element) => {
     if (element.checked) {
@@ -90,7 +115,6 @@ const changeStatus = (element) => {
     }
 
 }
-
 
 
 // ici les fonction pour pencil et X
@@ -113,25 +137,32 @@ const removeTask = (deleteId) => {
     taskWrapper.splice(deleteId, 1)
     let display = ""
     taskWrapper.forEach((task) => {
-            display += `
-            <div class="task" id="${task.id}">
-                <input type="checkbox" class="checkbox" id="checkbox${task.id}">
-                <div class="entered-text">
-                    <p>${task.name}  </p><span class="span">${task.value}</span>
-                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${task.id}')">
-                        <i class="fa-solid fa-pencil icon-pencil "></i>
-                    </button>
-                    <select name="select" class="select-list" id="select-${task.id}">
-                        <option value="todo" class="select-todo">To do</option>
-                        <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit">Edit</option>
-                    </select>
-                    <button class="btn-x" onclick="removeTask(${task.id})"><i
-                            class="fa-solid fa-xmark  icon-x"></i></button>
-                </div>
-            </div>
+        display += `
+
+        <div class="status-buttons">
+        <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+        <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+      </div> 
+
+      <div class="task" id="${task.id}">
+          <input type="checkbox" class="checkbox" id="checkbox${task.id}">
+          <div class="entered-text">
+              <p id="main-task">${task.name}</p><span class="span">${task.value}</span>
+              
+              <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                  <i class="fa-solid fa-pencil icon-pencil"></i>
+              </button>
+              <select name="select" class="select-list" id="select-${task.id}">
+                  <option value="todo" class="select-todo">To do</option>
+                  <option value="doing" class="select-doing">Doing</option>
+                  <option value="edit" class="select-edit" id="select-edit">Edit</option>
+              </select>
+              <button class="btn-x" onclick="removeTask(${task.id})"><i
+                      class="fa-solid fa-xmark  icon-x"></i></button>
+          </div>
+      </div>
             `
-        })
+    })
     console.log(taskWrapper)
     document.querySelector("#list").innerHTML = display
 }
@@ -187,4 +218,6 @@ dice.addEventListener("click", () => {
         taskInput.value = ""
     console.log(randomTaskNumber)
 })
+
+
 
