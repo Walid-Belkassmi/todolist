@@ -3,8 +3,8 @@ const toDoContainer = document.getElementById("to-do-container") //Partie dans l
 const taskInput = document.getElementById("input-text") //Barre de saisie des tâches
 const checkboxArea = document.getElementById('checkbox-1')
 const valueButon = document.querySelectorAll(".value-btn")
-const editButton = document.getElementById("select-edit")
-const dice = document.getElementById("random") //Dé qui génère aléatoirement une task
+const editButton = document.getElementById("btn-pencil")
+const dice = document.getElementById("btn-dice") // Récupération du Dé qui génère aléatoirement une task
 
 
 
@@ -18,7 +18,7 @@ const submitText = submitButton.onclick = (e) => {
     e.preventDefault()
 
     if (!taskInput.value) {
-        alert("entrer un text")
+        alert("enter your text")
     } else if (taskInput.value.length >= 55) {
         alert("not more than 55 characters")
         taskInput.value = ""
@@ -34,7 +34,10 @@ const submitText = submitButton.onclick = (e) => {
 
         let display = ""
 
-        taskWrapper.forEach((task, i) => {
+
+
+
+        taskWrapper.forEach((task) => {
 
 
 
@@ -52,7 +55,6 @@ const submitText = submitButton.onclick = (e) => {
                     <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                         <i class="fa-solid fa-pencil icon-pencil"></i>
                     </button>
-                   
                     <button class="btn-x" onclick="removeTask(${task.id})"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
@@ -71,11 +73,59 @@ const submitText = submitButton.onclick = (e) => {
 
 
 const editText = () => {
+    // e.preventDefault()
+    if (!taskInput.value) {
+        alert("enter your text")
+    } else if (taskInput.value.length >= 55) {
+        alert("not more than 55 characters")
+        taskInput.value = ""
+    } else {
 
+        let objet = {
+            name: taskInput.value,
+            status: "To do",
+            id: taskWrapper.length || 0,
+            value: y
+        }
+        taskWrapper.push(objet)
+
+        let display = ""
+
+        taskWrapper.forEach((task) => {
+
+            display = `
+            <div class="status-buttons">
+                <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+                <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+            </div> 
+            
+            <div class="task" id="${task.id}">
+                <input type="checkbox" class="checkbox" id="checkbox${task.id}">
+                <div class="entered-text">
+                    <p id="main-task">${task.name}</p><span class="span">${task.value}</span>
+                    <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                         <i class="fa-solid fa-pencil icon-pencil"></i>
+                    </button>
+            
+                    <button class="btn-x" onclick="removeTask(${task.id})"><i
+                        class="fa-solid fa-xmark  icon-x"></i>
+                    </button>
+            </div>
+            </div>
+            `
+            y = ""
+
+        })
+
+        document.querySelector("#list").innerHTML = display
+        taskWrapper.splice(objet.id - 1, 1)
+
+        taskInput.value = ""
+
+    }
 
 
 }
-
 
 
 const importence = (id) => {
@@ -145,7 +195,6 @@ const removeTask = (deleteId) => {
               <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                   <i class="fa-solid fa-pencil icon-pencil"></i>
               </button>
-            
               <button class="btn-x" onclick="removeTask(${task.id})"><i
                       class="fa-solid fa-xmark  icon-x"></i></button>
           </div>
@@ -155,10 +204,6 @@ const removeTask = (deleteId) => {
     console.log(taskWrapper)
     document.querySelector("#list").innerHTML = display
 }
-
-// editButton.addEventListener("click", => {
-//     alert('ça marche !')
-// })
 
 
 const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"]
@@ -178,26 +223,28 @@ dice.addEventListener("click", () => {
 
     let display = ""
 
-    taskWrapper.forEach((task, i) => {
+    taskWrapper.forEach((task) => {
 
         display += `
 
-            <div class="task" id="paragraph-${task.id}">
-                <input type="checkbox" class="checkbox" id="checkbox${task.id}">
-                <div class="entered-text">
-                    <p>${task.name}  </p><span class="span">${task.value}</span>
-                    <button class="btn-pencil" id="btn-pencil" onclick="modify('select-${i}')">
-                        <i class="fa-solid fa-pencil icon-pencil "></i>
-                    </button>
-                    <select name="select" class="select-list" id="select-${task.id}">
-                        <option value="todo" class="select-todo">To do</option>
-                        <option value="doing" class="select-doing">Doing</option>
-                        <option value="edit" class="select-edit" id="select-edit">Edit</option>
-                    </select>
-                    <button class="btn-x" onclick="removeTask()"><i
-                            class="fa-solid fa-xmark  icon-x"></i></button>
-                </div>
-            </div>
+            <div class="status-buttons">
+        <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
+        <button type="button" class="btn-doing-2" id="btn-doing">doing</button>
+      </div> 
+
+      <div class="task" id="${task.id}">
+          <input type="checkbox" class="checkbox" id="checkbox${task.id}">
+          <div class="entered-text">
+              <p id="main-task">${task.name}</p><span class="span">${task.value}</span>
+              
+              <button class="btn-pencil" id="btn-pencil" onClick="editText()">
+                  <i class="fa-solid fa-pencil icon-pencil"></i>
+              </button>
+
+              <button class="btn-x" onclick="removeTask(${task.id})"><i
+                      class="fa-solid fa-xmark  icon-x"></i></button>
+          </div>
+      </div>
             `
         y = ""
     })
