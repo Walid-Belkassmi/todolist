@@ -144,7 +144,7 @@ form {
     width: 55vw;
     margin: auto;
     padding: 1vh 2vw 3vh 2vw;
-    border-right: solid 14px rgba(63, 122, 138, 0.45);
+    /* border-right: solid 14px rgba(63, 122, 138, 0.45); */
     border-radius: 15px;
     margin-top: 5vh;
 }
