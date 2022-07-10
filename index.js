@@ -56,7 +56,6 @@ const submitText = submitButton.onclick = (e) => {
                     <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                         <i class="fa-solid fa-pencil icon-pencil"></i>
                     </button>
-
                     <button class="btn-x" onclick="removeTask(${task.id})"><i
                             class="fa-solid fa-xmark  icon-x"></i></button>
                 </div>
@@ -136,9 +135,9 @@ const editText = () => {
         taskWrapper.push(objet)
 
         let display = ""
-        
+
         taskWrapper.forEach((task) => {
-            
+
             display = `
             <div class="status-buttons">
                 <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
@@ -160,17 +159,17 @@ const editText = () => {
             </div>
             `
             y = ""
-            
+
         })
-        
+
         document.querySelector("#list").innerHTML = display
         taskWrapper.splice(objet.id - 1, 1)
 
         taskInput.value = ""
-        
+
     }
-    
-    
+
+
 }
 
 
@@ -217,7 +216,7 @@ const modify = (id) => {
     }
 }
 
-    
+
 const removeTask = (deleteId) => {
     // let deleteButton = document.getElementsById(id)
     // deleteButton.parentElement.parentNode.remove(deleteButton)
@@ -241,7 +240,6 @@ const removeTask = (deleteId) => {
               <button class="btn-pencil" id="btn-pencil" onClick="editText()">
                   <i class="fa-solid fa-pencil icon-pencil"></i>
               </button>
-
               <button class="btn-x" onclick="removeTask(${task.id})"><i
                       class="fa-solid fa-xmark  icon-x"></i></button>
           </div>
@@ -253,7 +251,7 @@ const removeTask = (deleteId) => {
 }
 
 
-const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"] 
+const randomTask = ["Faire la vaisselle", "Faire les courses", "Terminer de coder", "Commencer le projet"]
 dice.addEventListener("click", () => {
     const min = 0
     const max = randomTask.length
@@ -262,17 +260,17 @@ dice.addEventListener("click", () => {
     let objet = {
         name: randomTask[randomTaskNumber],
         status: "To do",
-        id : taskWrapper.length || 0,
+        id: taskWrapper.length || 0,
         value: y
     }
 
     taskWrapper.push(objet)
 
-        let display = ""
+    let display = ""
 
-        taskWrapper.forEach((task) => {
+    taskWrapper.forEach((task) => {
 
-            display += `
+        display += `
 
             <div class="status-buttons">
         <button type="button" class="btn-todo-2" id="btn-todo">to do</button>
@@ -293,12 +291,12 @@ dice.addEventListener("click", () => {
           </div>
       </div>
             `
-            y = ""
-        })
+        y = ""
+    })
 
 
-        document.querySelector("#list").innerHTML = display
-        taskInput.value = ""
+    document.querySelector("#list").innerHTML = display
+    taskInput.value = ""
     console.log(randomTaskNumber)
 })
 
